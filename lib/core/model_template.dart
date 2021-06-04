@@ -51,7 +51,6 @@ $imports
     }
 
     template += '''
-@immutable
 class $className${extendsClass != null ? ' extends $extendsClass ' : ''}${mixinClass.isNotEmpty ? ' with $mixinClass' : ''} {
 
 $constructor

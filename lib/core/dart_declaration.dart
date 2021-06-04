@@ -44,7 +44,7 @@ class DartDeclaration {
       declaration += '@override ';
     }
 
-    declaration += 'final $type$isNullableString $name${stringifyAssignment(assignment)};'.trim();
+    declaration += '$type$isNullableString $name${stringifyAssignment(assignment)};'.trim();
 
     return ModelTemplates.indented(declaration);
   }
