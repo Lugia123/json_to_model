@@ -62,7 +62,7 @@ class DartDeclaration {
         if (isModel) {
           conversion = '($jsonVar as List? ?? []).map((e) => ${modelFromJson()}).toList()';
         } else {
-          conversion = '($jsonVar as List? ?? []).map((e) => e as $cleanedType).toList()';
+          conversion = '($jsonVar as List? ?? []).map((e) => new $cleanedType.fromJson(e)).toList()';
         }
       } else if (isModel) {
         conversion = modelFromJson(jsonVar);
