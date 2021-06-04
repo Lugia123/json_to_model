@@ -68,7 +68,7 @@ extension StringExtension on String {
 extension JsonKeyModels on List<DartDeclaration> {
   String toConstructor(String className) {
     final declarations = where((e) => e.name != null).map((e) => e.toConstructor()).join('\n').trim();
-    return ModelTemplates.indented('const $className({\n  $declarations\n});', indent: 1);
+    return ModelTemplates.indented('$className({\n  $declarations\n});', indent: 1);
   }
 
   String toDeclarationStrings(String className) {

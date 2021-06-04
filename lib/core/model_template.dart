@@ -44,7 +44,6 @@ class ModelTemplates {
 
     if (!isNested) {
       template += '''
-import 'package:flutter/foundation.dart';
 $imports
 
 ''';
