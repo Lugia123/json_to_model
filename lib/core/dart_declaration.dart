@@ -25,6 +25,8 @@ class DartDeclaration {
 
   bool get isEnum => enumValues.isNotEmpty;
   bool get isDatetime => type == 'DateTime';
+  bool get isString => type == 'String';
+  bool get isInt => type == 'int';
 
   String get isNullableString => isNullable ? '?' : '';
 
@@ -68,8 +70,12 @@ class DartDeclaration {
         conversion = modelFromJson(jsonVar);
       } else if (isDatetime) {
         conversion = 'DateTime.parse($jsonVar as String)';
+      } else if (isString) {
+        conversion = '$jsonVar as $type'; 
+      } else if (isInt) {
+        conversion = '$jsonVar as $type'; 
       } else {
-        conversion =  '$type.fromJson($jsonVar)'; //'$jsonVar as $type';
+        conversion = '$type.fromJson($jsonVar)'; //lugia
       }
 
       if (isNullable) {
