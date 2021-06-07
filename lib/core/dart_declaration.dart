@@ -27,6 +27,7 @@ class DartDeclaration {
   bool get isDatetime => type == 'DateTime';
   bool get isString => type == 'String';
   bool get isInt => type == 'int';
+  bool get isBool => type == 'bool';
 
   String get isNullableString => isNullable ? '?' : '';
 
@@ -73,6 +74,8 @@ class DartDeclaration {
       } else if (isString) {
         conversion = '$jsonVar as $type'; 
       } else if (isInt) {
+        conversion = '$jsonVar as $type'; 
+      } else if (isBool) {
         conversion = '$jsonVar as $type'; 
       } else {
         conversion = '$type.fromJson($jsonVar)'; //lugia
