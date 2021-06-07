@@ -69,7 +69,7 @@ class DartDeclaration {
       } else if (isDatetime) {
         conversion = 'DateTime.parse($jsonVar as String)';
       } else {
-        conversion = '$jsonVar as $type';
+        conversion =  '$type.fromJson($jsonVar)'; //'$jsonVar as $type';
       }
 
       if (isNullable) {
