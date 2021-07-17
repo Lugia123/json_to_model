@@ -66,6 +66,12 @@ class DartDeclaration {
           conversion = '($jsonVar as List? ?? []).map((e) => ${modelFromJson()}).toList()';
         } else {
           conversion = '($jsonVar as List? ?? []).map((e) => new $cleanedType.fromJson(e)).toList()';
+          if (cleanedType == 'String') {
+            conversion = '($jsonVar as List? ?? []).map((e) => e as String).toList()';
+          }
+          if (cleanedType == 'int') {
+            conversion = '($jsonVar as List? ?? []).map((e) => e as int).toList()';
+          }
         }
       } else if (isModel) {
         conversion = modelFromJson(jsonVar);
