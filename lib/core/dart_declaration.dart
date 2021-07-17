@@ -64,14 +64,16 @@ class DartDeclaration {
       } else if (isList) {
         if (isModel) {
           conversion = '($jsonVar as List? ?? []).map((e) => ${modelFromJson()}).toList()';
+        } else if (isDatetime) {
+          conversion = '($jsonVar as List? ?? []).map((e) => e as DateTime).toList()';
+        } else if (isString) {
+          conversion = '($jsonVar as List? ?? []).map((e) => e as String).toList()';
+        } else if (isInt) {
+          conversion = '($jsonVar as List? ?? []).map((e) => e as int).toList()';
+        } else if (isBool) {
+          conversion = '($jsonVar as List? ?? []).map((e) => e as bool).toList()';
         } else {
           conversion = '($jsonVar as List? ?? []).map((e) => new $cleanedType.fromJson(e)).toList()';
-          if (cleanedType == 'String') {
-            conversion = '($jsonVar as List? ?? []).map((e) => e as String).toList()';
-          }
-          if (cleanedType == 'int') {
-            conversion = '($jsonVar as List? ?? []).map((e) => e as int).toList()';
-          }
         }
       } else if (isModel) {
         conversion = modelFromJson(jsonVar);
